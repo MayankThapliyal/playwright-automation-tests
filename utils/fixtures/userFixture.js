@@ -1,6 +1,6 @@
-const { test as base } = require('@playwright/test');
-const LoginPage = require('../pages/LoginPage');
-const testData = require('./testData');
+import { test as base } from '@playwright/test';
+import LoginPage from '../pages/LoginPage';
+import { users } from './testData.js';
 
 // Extend Playwright test with a custom "loggedInPage" fixture
 const test = base.extend({
@@ -9,12 +9,12 @@ const test = base.extend({
 
     await login.gotoLogin();
     await login.login(
-      testData.users.valid.username,
-      testData.users.valid.password
+      users.valid.username,
+      users.valid.password
     );
 
     await use(page);
   }
 });
 
-module.exports = test;
+export default test;

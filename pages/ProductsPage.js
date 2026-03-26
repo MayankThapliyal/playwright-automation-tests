@@ -1,4 +1,4 @@
-const BasePage = require('./BasePage');
+import BasePage from './BasePage';
 
 class ProductsPage extends BasePage {
   constructor(page) {
@@ -19,6 +19,10 @@ class ProductsPage extends BasePage {
     await this.click(this.addToCartBtn);
   }
 
+  async addProductByIndex(index){
+    await this.page.locator(this.addToCartBtn).nth(index).click();
+  }
+
   async goToCart() {
     await this.click(this.cartIcon);
   }
@@ -28,6 +32,11 @@ class ProductsPage extends BasePage {
     if (await badge.count() === 0) return 0;
     return parseInt(await badge.textContent());
   }
+
+  async getProductCount(){
+    return await this.page.locator(this.inventoryItem).count();
+  }
+  
 }
 
-module.exports = ProductsPage;
+export default ProductsPage;

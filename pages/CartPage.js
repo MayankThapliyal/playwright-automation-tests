@@ -1,7 +1,7 @@
-const BasePage = require('./BasePage');
+import BasePage  from "./BasePage";
 
-class CartPage extends BasePage {
-  constructor(page) {
+class CartPage extends BasePage{
+  constructor(page){
     super(page);
     this.cartItem = '.cart_item';
     this.cartItemName = '.inventory_item_name';
@@ -9,18 +9,18 @@ class CartPage extends BasePage {
     this.removeBtn = 'button[data-test^="remove"]';
   }
 
-  async getCartItems() {
+  async getCartItems(){
     await this.waitFor(this.cartItem);
-    return await this.page.$$eval(this.cartItemName, els => els.map(e => e.textContent.trim()));
+    return await this.page.$$eval(this.cartItemName, els => els.map(e=> e.textContent.trim()));
   }
 
-  async removeFirstItem() {
+  async removeFirstItem(){
     await this.click(this.removeBtn);
   }
 
-  async proceedToCheckout() {
+  async proceedToCheckout(){
     await this.click(this.checkoutBtn);
   }
 }
 
-module.exports = CartPage;
+export default CartPage;

@@ -1,9 +1,9 @@
-const { expect } = require('@playwright/test');
-const test = require('../fixtures/userFixture');
-const ProductsPage = require('../pages/ProductsPage');
-const CartPage = require('../pages/CartPage');
-const CheckoutPage = require('../pages/CheckoutPage');
-const testData = require('../fixtures/testData');
+import { expect } from '@playwright/test';
+import test from '../utils/fixtures/userFixture';
+import ProductsPage from '../pages/ProductsPage';
+import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
+import { checkout as _checkout } from '../utils/fixtures/testData';
 
 test.describe('Checkout Flow', () => {
 
@@ -25,9 +25,9 @@ test.describe('Checkout Flow', () => {
     // Checkout page
     const checkout = new CheckoutPage(page);
     await checkout.fillCheckoutInfo(
-      testData.checkout.firstName,
-      testData.checkout.lastName,
-      testData.checkout.postalCode
+      _checkout.firstName,
+      _checkout.lastName,
+      _checkout.postalCode
     );
 
     await checkout.finishOrder();

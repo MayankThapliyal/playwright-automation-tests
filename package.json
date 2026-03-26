@@ -1,0 +1,29 @@
+{
+  "name": "playwright-automation-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=fierfox",
+    "test:webkit": "playwright test --project=webkit",
+    "report": "allure open alure-results",
+    "test:chromium:headed": "playwright test --headed --project=chromium"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^3.4.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
