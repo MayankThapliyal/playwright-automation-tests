@@ -1,5 +1,5 @@
 // import {expect} from '@playwright/test';
-import {test,expect} from '../utils/fixtures/auth..js';
+import {test,expect} from '../utils/fixtures/auth.js';
 import ProductsPage from '../pages/ProductsPage.js';
 import CheckoutPage from '../pages/CheckoutPage.js';
 import CartPage from '../pages/CartPage.js';
@@ -12,7 +12,7 @@ async function goToCheckoutStepOne(page){
     await products.goToCart();
 
     const cart = new CartPage(page);
-    const items = await cart.locator('.cart_item').count();
+    const items = await cart.getCartItems();
     expect(items.length).toBe(1);
 
     await cart.proceedToCheckout();

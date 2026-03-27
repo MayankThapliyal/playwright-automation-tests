@@ -5,18 +5,18 @@ import CartPage from '../pages/CartPage.js';
 import CheckoutPage from '../pages/CheckoutPage.js';
 
 test.describe('Cart Negative Flow', ()=>{
-    test('shows no remove button when the cart is empty', {tag:'@negative'}, async({authenticatedPage})=>{
-        const page = authenticatedPage;
-        const products = new ProductsPage(page);
+    test('shows no remove button when the cart is empty', {tag:'@negative'}, async({ authenticatedPage }) => {
+            const page = authenticatedPage;
+            const products = new ProductsPage(page);
 
-        await products.goToCart();
+            await products.goToCart();
 
-        const cartItemsCount = await page.locator('.cart_item').count();
-        expect(cartItemsCount).toBe(0);
+            const cartItemsCount = await page.locator('.cart_item').count();
+            expect(cartItemsCount).toBe(0);
 
-        const removeButtonCount = await page.locator('button[test-data^="remove"]').count();
-        expect(removeButtonCount).toBe(0);
-    });
+            const removeButtonCount = await page.locator('button[test-data^="remove"]').count();
+            expect(removeButtonCount).toBe(0);
+        });
 
     test('shows validation error when checking out empty cart with blank info', {tag:'@negative'}, async({authenticatedPage})=>{
         const page = authenticatedPage;
@@ -41,7 +41,7 @@ test.describe('Cart Negative Flow', ()=>{
         await products.addProductByIndex(1);
 
         const cartCountBefore = await products.getCartCount();
-        expect(cartCountBefore).toBe(0);
+        expect(cartCountBefore).toBe(2);
 
         await products.goToCart();
 

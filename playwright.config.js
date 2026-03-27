@@ -10,7 +10,7 @@ export default defineConfig({
   testDir: './tests',
 
   retries: 1,
-  timeout: 120 * 1000,
+  timeout: 30 * 1000,
 
   // Parallel across files
   fullyParallel: true,

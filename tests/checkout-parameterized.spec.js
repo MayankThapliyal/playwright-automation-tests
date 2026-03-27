@@ -25,7 +25,7 @@ test.describe('Parameterized Checkout Tests', ()=>{
             await checkout.finishOrder();
 
             const msg = await checkout.getSuccessMessage();
-            expect(msg).toContain('Thank You');
+            expect(msg).toContain('Thank you');
         });
     });
 });

@@ -1,5 +1,5 @@
 import {test as base} from '@playwright/test';
-import LoginPage from '../../pages/LoginPage';
+import LoginPage from '../../pages/LoginPage.js';
 import {users} from './testData.js';
 
 async function loginWithFreshContext(browser, username, password){

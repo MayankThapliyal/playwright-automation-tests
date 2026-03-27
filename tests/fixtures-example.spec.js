@@ -4,7 +4,7 @@ test.describe('Fixture Example tests', ()=>{
 
     test('Authenticated user lands on the inventory page', async({authenticatedPage})=>{
         await expect(authenticatedPage).toHaveURL(/.*inventory/);
-        await expect(authenticatedPage).locator('.title').toHaveText('Products');
+        await expect(authenticatedPage.locator('.title')).toHaveText('Products');
     });
 
     test('Locked user sees error', async({lockedPage})=>{

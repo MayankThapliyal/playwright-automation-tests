@@ -38,7 +38,7 @@ test.describe('Login Negative Flow', () => {
         const login = new LoginPage(page);
         await login.gotoLogin();
         
-        await login.login(users.valid.username), '';
+        await login.login(users.valid.username, '');
         const error = page.locator('[data-test="error"]');
         expect(error).toBeVisible();
         await expect(error).toContainText('Password is required');

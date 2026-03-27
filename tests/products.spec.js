@@ -22,7 +22,7 @@ test.describe('Products Tests', () => {
     const products = new ProductsPage(page);
 
     await products.addFirstProductToCart();
-    await products.locator('button[data-test^="add-to-cart"]').nth(1).click();
+    await page.locator('button[data-test^="add-to-cart"]').nth(1).click();
 
     await products.goToCart();
 
