@@ -1,5 +1,5 @@
-import { expect } from "@playwright/test";
-import test from '../utils/fixtures/userFixture.js';
+// import { expect } from "@playwright/test";
+import {test,expect} from '../utils/fixtures/auth.js';
 import ProductPage from '../pages/ProductsPage.js';
 import CartPage from '../pages/CartPage.js';
 import CheckoutPage from '../pages/CheckoutPage.js';
@@ -7,8 +7,8 @@ import { testCases } from "../utils/fixtures/testData.js";
 
 test.describe('Parameterized Checkout Tests', ()=>{
     testCases.forEach((testData, index)=>{
-        test(`Complete checkout with user ${index+1}`, async({loggedInPage})=>{
-            const page = loggedInPage;
+        test(`Complete checkout with user ${index+1}`, async({authenticatedPage})=>{
+            const page = authenticatedPage;
             const products = new ProductPage(page);
 
             await products.addFirstProductToCart();

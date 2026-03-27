@@ -1,14 +1,15 @@
-import { expect } from '@playwright/test';
-import test from '../utils/fixtures/userFixture';
-import ProductsPage from '../pages/ProductsPage';
-import CartPage from '../pages/CartPage';
-import CheckoutPage from '../pages/CheckoutPage';
-import { checkout as _checkout } from '../utils/fixtures/testData';
+//import { expect } from '@playwright/test';
+//import test from '../utils/fixtures/userFixture';
+import {test,expect} from '../utils/fixtures/auth.js';
+import ProductsPage from '../pages/ProductsPage.js';
+import CartPage from '../pages/CartPage.js';
+import CheckoutPage from '../pages/CheckoutPage.js';
+import { checkout as _checkout } from '../utils/fixtures/testData.js';
 
 test.describe('Checkout Flow', () => {
 
-  test('Complete full checkout order', async ({ loggedInPage }) => {
-    const page = loggedInPage;
+  test('Complete full checkout order', async ({ authenticatedPage }) => {
+    const page = authenticatedPage;
 
     // Products page
     const products = new ProductsPage(page);

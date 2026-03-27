@@ -1,5 +1,5 @@
-import {expect} from '@playwright/test';
-import test from '../utils/fixtures/userFixture..js';
+// import {expect} from '@playwright/test';
+import {test,expect} from '../utils/fixtures/auth..js';
 import ProductsPage from '../pages/ProductsPage.js';
 import CheckoutPage from '../pages/CheckoutPage.js';
 import CartPage from '../pages/CartPage.js';
@@ -19,8 +19,8 @@ async function goToCheckoutStepOne(page){
 }
 
 test.describe('Checkout Negative Flow', ()=>{
-    test('Shows error when first name is missing',{tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('Shows error when first name is missing',{tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         await goToCheckoutStepOne(page);
 
         const checkout = new CheckoutPage(page);
@@ -30,8 +30,8 @@ test.describe('Checkout Negative Flow', ()=>{
         await expect(error).toContainText('First Name is required');
     });
 
-    test('Shows error when last name is missing',{tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('Shows error when last name is missing',{tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         await goToCheckoutStepOne(page);
 
         const checkout = new CheckoutPage(page);
@@ -41,8 +41,8 @@ test.describe('Checkout Negative Flow', ()=>{
         await expect(error).toContainText('Last Name is required');
     });
 
-    test('Shows error when postal code is missing',{tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('Shows error when postal code is missing',{tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         await goToCheckoutStepOne(page);
 
         const checkout = new CheckoutPage(page);

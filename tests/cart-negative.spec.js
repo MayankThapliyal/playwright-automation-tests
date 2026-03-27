@@ -1,12 +1,12 @@
-import {expect} from '@playwright/test';
-import test from '../utils/fixtures/userFixture.js';
+// import {expect} from '@playwright/test';
+import {test,expect} from '../utils/fixtures/auth.js';
 import ProductsPage from '../pages/ProductsPage.js';
 import CartPage from '../pages/CartPage.js';
 import CheckoutPage from '../pages/CheckoutPage.js';
 
 test.describe('Cart Negative Flow', ()=>{
-    test('shows no remove button when the cart is empty', {tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('shows no remove button when the cart is empty', {tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         const products = new ProductsPage(page);
 
         await products.goToCart();
@@ -18,8 +18,8 @@ test.describe('Cart Negative Flow', ()=>{
         expect(removeButtonCount).toBe(0);
     });
 
-    test('shows validation error when checking out empty cart with blank info', {tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('shows validation error when checking out empty cart with blank info', {tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         const products = new ProductsPage(page);
         const cart = new CartPage(page);
         const checkout = new CheckoutPage(page);
@@ -33,8 +33,8 @@ test.describe('Cart Negative Flow', ()=>{
         await expect(error).toContainText('First Name is required');
     });
 
-    test('cart count becomes 0 after removing all items', {tag:'@negative'}, async({loggedInPage})=>{
-        const page = loggedInPage;
+    test('cart count becomes 0 after removing all items', {tag:'@negative'}, async({authenticatedPage})=>{
+        const page = authenticatedPage;
         const products = new ProductsPage(page);
 
         await products.addFirstProductToCart();
